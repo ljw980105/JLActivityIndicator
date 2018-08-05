@@ -7,10 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044327F1211636FE00C70D0F /* ActivityIndicating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044327F0211636FE00C70D0F /* ActivityIndicating.swift */; };
+		044327F32116392000C70D0F /* JLActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044327F22116392000C70D0F /* JLActivityIndicator.swift */; };
+		044327F521163CC400C70D0F /* PathSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044327F421163CC400C70D0F /* PathSpinner.swift */; };
+		044327F721165F4F00C70D0F /* SpinnerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044327F621165F4F00C70D0F /* SpinnerMode.swift */; };
+		044327F9211664A300C70D0F /* ImageSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044327F8211664A300C70D0F /* ImageSpinner.swift */; };
 		04D038EC2116334C0052CF9A /* JLActivityIndicator.h in Headers */ = {isa = PBXBuildFile; fileRef = 04D038EA2116334C0052CF9A /* JLActivityIndicator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		044327F0211636FE00C70D0F /* ActivityIndicating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicating.swift; sourceTree = "<group>"; };
+		044327F22116392000C70D0F /* JLActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLActivityIndicator.swift; sourceTree = "<group>"; };
+		044327F421163CC400C70D0F /* PathSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathSpinner.swift; sourceTree = "<group>"; };
+		044327F621165F4F00C70D0F /* SpinnerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerMode.swift; sourceTree = "<group>"; };
+		044327F8211664A300C70D0F /* ImageSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSpinner.swift; sourceTree = "<group>"; };
 		04D038E72116334C0052CF9A /* JLActivityIndicator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JLActivityIndicator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D038EA2116334C0052CF9A /* JLActivityIndicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JLActivityIndicator.h; sourceTree = "<group>"; };
 		04D038EB2116334C0052CF9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,6 +58,11 @@
 			children = (
 				04D038EA2116334C0052CF9A /* JLActivityIndicator.h */,
 				04D038EB2116334C0052CF9A /* Info.plist */,
+				044327F0211636FE00C70D0F /* ActivityIndicating.swift */,
+				044327F621165F4F00C70D0F /* SpinnerMode.swift */,
+				044327F421163CC400C70D0F /* PathSpinner.swift */,
+				044327F8211664A300C70D0F /* ImageSpinner.swift */,
+				044327F22116392000C70D0F /* JLActivityIndicator.swift */,
 			);
 			path = JLActivityIndicator;
 			sourceTree = "<group>";
@@ -95,6 +110,7 @@
 				TargetAttributes = {
 					04D038E62116334C0052CF9A = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -130,6 +146,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				044327F9211664A300C70D0F /* ImageSpinner.swift in Sources */,
+				044327F521163CC400C70D0F /* PathSpinner.swift in Sources */,
+				044327F32116392000C70D0F /* JLActivityIndicator.swift in Sources */,
+				044327F1211636FE00C70D0F /* ActivityIndicating.swift in Sources */,
+				044327F721165F4F00C70D0F /* SpinnerMode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +282,7 @@
 		04D038F02116334C0052CF9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -270,14 +292,16 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = JLActivityIndicator/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jingweili.jlactivityindicator.JLActivityIndicator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jingweili.jlactivityindicator;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -286,6 +310,7 @@
 		04D038F12116334C0052CF9A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -295,12 +320,13 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = JLActivityIndicator/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jingweili.jlactivityindicator.JLActivityIndicator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jingweili.jlactivityindicator;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;

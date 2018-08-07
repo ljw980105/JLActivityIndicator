@@ -17,7 +17,6 @@ class PathSpinner: ActivityIndicating {
     var color: UIColor = UIColor.lightGray
     var size: CGFloat = 60
     var view: UIView?
-    var startedSpinning = false
     
     // MARK: Protocol Stubs
     
@@ -29,7 +28,6 @@ class PathSpinner: ActivityIndicating {
     }
     
     func start() {
-        guard !startedSpinning else { return }
         shapeLayer.strokeColor = color.cgColor
         shapeLayer.frame = CGRect(x: 0, y: 0, width: size, height: size)
         shapeLayer.path = path.cgPath
@@ -39,7 +37,6 @@ class PathSpinner: ActivityIndicating {
             guard let strongSelf = self else { return }
             strongSelf.shapeLayer.position = strongSelf.view?.center ?? CGPoint()
             strongSelf.shapeLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-            strongSelf.startedSpinning = true
             strongSelf.view?.layer.addSublayer(strongSelf.shapeLayer)
             strongSelf.startAnimation()
         }
@@ -47,13 +44,10 @@ class PathSpinner: ActivityIndicating {
     }
     
     func stop() {
-        guard startedSpinning else { return }
         removeAnimation()
-        startedSpinning = false
         for layer in self.view?.layer.sublayers ?? [] {
             if let shape = layer as? CAShapeLayer {
                 shape.removeFromSuperlayer()
-                break
             }
         }
     }

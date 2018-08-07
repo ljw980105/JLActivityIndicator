@@ -1,6 +1,27 @@
 # JLActivityIndicator
 
-An replacement for the build-in `UIActivityIndicator` on iOS. Supply a custom image for your spinner or supply any `UIBezierPath`! Written with the Core Animation Framework in Swift.
+A replacement for the build-in `UIActivityIndicator` on iOS. Supply a custom image for your spinner or supply any `UIBezierPath`! Written with the Core Animation Framework in Swift.
+
+![] (Demos/Circle.gif)
+
+## Installation
+
+### Cocoapods
+
+Cocoapods is a dependency manager for Cocoapods. Make your to install it before executing the following command:
+To install `JLActivityIndicator`, add the following to your `Podfile`:
+
+```shell  
+pod 'JLActivityIndicator'
+```
+The run this in the terminal:
+```shell  
+pod install
+```
+
+### Carthage
+
+Coming soon!
 
 ## Usage
 
@@ -48,6 +69,24 @@ DispatchQueue.global(qos: .userInitiated).async {
     }
 }
 ```
+Sample Heartbeat Path: 
+
+```swift 
+
+let path = UIBezierPath() // contained in a 100 x 100 frame
+path.move(to: CGPoint(x: 0, y: 60))
+path.addLine(to: CGPoint(x: 20, y: 60))
+path.addLine(to: CGPoint(x: 40, y: 20))
+path.addLine(to: CGPoint(x: 60, y: 100))
+path.addLine(to: CGPoint(x: 80, y: 60))
+path.addLine(to: CGPoint(x: 100, y: 60))
+
+let spinner = JLActivityIndicator(on: view, mode: .path)
+spinner.path = path
+spinner.size = 100
+spinner.start()
+```
+![] (Demos/Heartbeat.gif)
 
 ### Customizable Properties
 

@@ -16,7 +16,6 @@ protocol ActivityIndicating {
     var color: UIColor { get set }  
     var duration: Double { get set }
     var size: CGFloat { get set }
-    var startedSpinning: Bool { get set }
     var strokeWidth: CGFloat { get set }
     
     func setup(on view: UIView)

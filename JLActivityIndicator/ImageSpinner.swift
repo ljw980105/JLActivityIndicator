@@ -16,7 +16,6 @@ class ImageSpinner: ActivityIndicating {
     var size: CGFloat = 60
     var strokeWidth: CGFloat = 3.0
     var view: UIView?
-    var startedSpinning = false
     
     private let rotationAnimationKey = "rotationanimationkey"
     
@@ -33,12 +32,11 @@ class ImageSpinner: ActivityIndicating {
             unwrappedView.addSubview(unwrappedImage)
             unwrappedView.bringSubview(toFront: unwrappedImage)
             strongSelf.startAnimation()
-            strongSelf.startedSpinning = true
         }
     }
     
     func stop() {
-        guard startedSpinning, let spinningImage = self.image else { return }
+        guard let spinningImage = self.image else { return }
         UIView.transition(with: spinningImage, duration: 0.1, options: [.transitionCrossDissolve],
         animations: {
             spinningImage.alpha = 0

@@ -2,7 +2,7 @@
 
 A replacement for the build-in `UIActivityIndicator` on iOS. Supply a custom image for your spinner or supply any `UIBezierPath`! Written with the Core Animation Framework in Swift.
 
-![] (Demos/Circle.gif)
+![](https://raw.githubusercontent.com/ljw980105/JLActivityIndicator/master/Demos/Circle.gif)
 
 ## Installation
 
@@ -86,7 +86,8 @@ spinner.path = path
 spinner.size = 100
 spinner.start()
 ```
-![] (Demos/Heartbeat.gif)
+![](https://raw.githubusercontent.com/ljw980105/JLActivityIndicator/master/Demos/Heartbeat.gif)
+
 
 ### Customizable Properties
 

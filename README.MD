@@ -8,13 +8,14 @@ A replacement for the build-in `UIActivityIndicator` on iOS. Supply a custom ima
 
 ### Cocoapods
 
-Cocoapods is a dependency manager for Cocoapods. Make your to install it before executing the following command:
+Cocoapods is a dependency manager for Cocoa libraries. Make your to install it before executing the following:
+
 To install `JLActivityIndicator`, add the following to your `Podfile`:
 
 ```shell  
 pod 'JLActivityIndicator'
 ```
-The run this in the terminal:
+Then run this in the terminal:
 ```shell  
 pod install
 ```

@@ -9,7 +9,7 @@
 import Foundation
 
 class ImageSpinner: ActivityIndicating {
-    var path: UIBezierPath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60))
+    var paths: [UIBezierPath] = [UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60))]
     var image: UIImageView?
     var duration: Double = 1
     var color: UIColor = UIColor.lightGray

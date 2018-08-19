@@ -15,8 +15,8 @@ public class JLActivityIndicator: UIView {
     /** The path the activity indicator's drawing will follow. Make sure it's containied
         in a size x size square. Only applies to the path mode.
      */
-    public var path: UIBezierPath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60)) {
-        didSet { spinner.path = path }
+    public var paths: [UIBezierPath] = [UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60))] {
+        didSet { spinner.paths = paths }
     }
     /** The image used to specify the look of the activity indicator. Only applies to the image mode. */
     public var image: UIImage? {

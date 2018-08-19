@@ -10,37 +10,41 @@ import Foundation
 
 class PathSpinner: ActivityIndicating {
     var image: UIImageView?
-    var path: UIBezierPath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60))
-    var shapeLayer: CAShapeLayer = CAShapeLayer()
+    var paths: [UIBezierPath] = [UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60))]
+    var shapeLayers: [CAShapeLayer] = []
     var strokeWidth: CGFloat = 3.0
     var duration: Double = 1
     var color: UIColor = UIColor.lightGray
     var size: CGFloat = 60
     var view: UIView?
     
+    private var animationKeys = [String]()
+    
     // MARK: Protocol Stubs
     
     func setup(on view: UIView) {
         self.view = view
-        shapeLayer.lineWidth = 3.0
-        shapeLayer.fillColor = nil
-        
     }
     
     func start() {
-        shapeLayer.strokeColor = color.cgColor
-        shapeLayer.frame = CGRect(x: 0, y: 0, width: size, height: size)
-        shapeLayer.path = path.cgPath
-        shapeLayer.lineWidth = strokeWidth
-        
-        DispatchQueue.main.async { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.shapeLayer.position = strongSelf.view?.center ?? CGPoint()
-            strongSelf.shapeLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-            strongSelf.view?.layer.addSublayer(strongSelf.shapeLayer)
-            strongSelf.startAnimation()
+        for path in paths {
+            let shapeLayer = CAShapeLayer()
+            shapeLayers.append(shapeLayer)
+            shapeLayer.lineWidth = 3.0
+            shapeLayer.fillColor = nil
+            shapeLayer.strokeColor = color.cgColor
+            shapeLayer.frame = CGRect(x: 0, y: 0, width: size, height: size)
+            shapeLayer.path = path.cgPath
+            shapeLayer.lineWidth = strokeWidth
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let strongSelf = self else { return }
+                shapeLayer.position = strongSelf.view?.center ?? CGPoint()
+                shapeLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+                strongSelf.view?.layer.addSublayer(shapeLayer)
+            }
         }
-        
+        startAnimation()
     }
     
     func stop() {
@@ -53,32 +57,40 @@ class PathSpinner: ActivityIndicating {
     }
     
     func startAnimation() {
-        let startAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        startAnimation.fromValue = 0.0
-        startAnimation.toValue = 1.0
-        startAnimation.duration = duration
-        startAnimation.beginTime = 0
-        
-        shapeLayer.strokeStart = 0.0
-        shapeLayer.strokeEnd = 1.0
-        let reverseAnimation = CABasicAnimation(keyPath: "strokeStart")
-        reverseAnimation.toValue = 1.0
-        reverseAnimation.duration = duration
-        reverseAnimation.beginTime = duration
-        
-        let animationGroup = CAAnimationGroup()
-        animationGroup.animations = [reverseAnimation, startAnimation]
-        animationGroup.repeatCount = .greatestFiniteMagnitude
-        animationGroup.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        animationGroup.autoreverses = true
-        animationGroup.duration = duration * 2
-        
-        shapeLayer.add(animationGroup, forKey: "spinningAnimation")
+        var count = 0
+        animationKeys.removeAll()
+        for shapeLayer in shapeLayers {
+            let startAnimation = CABasicAnimation(keyPath: "strokeEnd")
+            startAnimation.fromValue = 0.0
+            startAnimation.toValue = 1.0
+            startAnimation.duration = duration
+            startAnimation.beginTime = 0
+            
+            let reverseAnimation = CABasicAnimation(keyPath: "strokeStart")
+            reverseAnimation.fromValue = 0.0
+            reverseAnimation.toValue = 1.0
+            reverseAnimation.duration = duration
+            reverseAnimation.beginTime = duration
+            
+            let animationGroup = CAAnimationGroup()
+            animationGroup.animations = [reverseAnimation, startAnimation]
+            animationGroup.repeatCount = .greatestFiniteMagnitude
+            animationGroup.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            animationGroup.autoreverses = true
+            animationGroup.duration = duration * 2
+            
+            let animationKey = "spinningAnimation\(count)"
+            shapeLayer.add(animationGroup, forKey: animationKey)
+            animationKeys.append(animationKey)
+            count += 1
+        }
     }
     
     func removeAnimation() {
-        if view?.layer.animation(forKey: "spinningAnimation") != nil {
-            view?.layer.removeAnimation(forKey: "spinningAnimation")
+        for animationKey in animationKeys {
+            if view?.layer.animation(forKey: animationKey) != nil {
+                view?.layer.removeAnimation(forKey: animationKey)
+            }
         }
     }
     

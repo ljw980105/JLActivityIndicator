@@ -12,7 +12,7 @@ import UIKit
 protocol ActivityIndicating {
     var image: UIImageView? { get set }
     var view: UIView? { get set }
-    var path: UIBezierPath { get set }
+    var paths: [UIBezierPath] { get set }
     var color: UIColor { get set }  
     var duration: Double { get set }
     var size: CGFloat { get set }

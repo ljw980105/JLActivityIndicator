@@ -8,7 +8,7 @@ A replacement for the build-in `UIActivityIndicator` on iOS. Supply a custom ima
 
 ### Cocoapods
 
-Cocoapods is a dependency manager for Cocoa libraries. Make your to install it before executing the following:
+Cocoapods is a dependency manager for Cocoa projects. Make your to install it before executing the following:
 
 To install `JLActivityIndicator`, add the following to your `Podfile`:
 
@@ -33,7 +33,7 @@ Start by adding `import JLActivityIndicator` on the top of your file.
 `JLActivityIndicator` has two modes of animation: 
 
 ```swift
-case path //supply a UIBezierPath object for the activity indicator
+case path //supply custom UIBezierPath objects for the activity indicator
 case image // supply a custom image
 ```
 
@@ -55,11 +55,11 @@ DispatchQueue.global(qos: .userInitiated).async {
 
 ### Custom Path
 
-Supply a `UIBezierPath` object, and the code will draw a custom path! 
+Supply custom  `UIBezierPath` objects, and the code will draw one or many custom paths!  You can add more paths by filling the `paths` array.
 
 ```swift
 let spinner = JLActivityIndicator(on: view, mode: .path)
-spinner.path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60))
+spinner.paths = [UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60))]
 spinner.color  = UIColor.red
 spinner.size = 60
 spinner.start()
@@ -97,13 +97,13 @@ For the `.image` mode, you can specify the image and set the animation duration.
 spinner.image = UIImage(named: "myImage")
 spinner.duration = 1.0 // defaults to 1 second
 ```
-For the `.path` mode, there are 5 customizable options. Please make sure that the `path` object is contained within a square with the width of `size`: 
+For the `.path` mode, there are 5 customizable options. Adding more items to the `paths` array will cause all paths contained in the array to animate at the same time. Please make sure that the any paths contained in the `paths` array are contained within a square with the width of `size`: 
 
 ```swift 
 spinner.duration = 1.0 // defaults to 1 second
 spinner.color = UIColor.red // defaults to light grey
 spinner.size = 60 // the spinner will be drawn in a size x size frame. Defaults to 60
-spinner.path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60)) // defaults to a 60 x 60 circle
+spinner.paths = [UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60))] // defaults to a 60 x 60 circle
 spinner.strokeWidth = 3.0 // defaults to 3.0
 ```
 ## License

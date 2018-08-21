@@ -13,7 +13,7 @@ class ImageSpinner: ActivityIndicating {
     var image: UIImageView?
     var duration: Double = 1
     var color: UIColor = UIColor.lightGray
-    var size: CGFloat = 60
+    var size: CGSize = CGSize.zero
     var strokeWidth: CGFloat = 3.0
     var view: UIView?
     

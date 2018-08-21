@@ -15,7 +15,7 @@ class PathSpinner: ActivityIndicating {
     var strokeWidth: CGFloat = 3.0
     var duration: Double = 1
     var color: UIColor = UIColor.lightGray
-    var size: CGFloat = 60
+    var size: CGSize = CGSize(width: 60, height: 60)
     var view: UIView?
     
     private var animationKeys = [String]()
@@ -30,10 +30,9 @@ class PathSpinner: ActivityIndicating {
         for path in paths {
             let shapeLayer = CAShapeLayer()
             shapeLayers.append(shapeLayer)
-            shapeLayer.lineWidth = 3.0
             shapeLayer.fillColor = nil
             shapeLayer.strokeColor = color.cgColor
-            shapeLayer.frame = CGRect(x: 0, y: 0, width: size, height: size)
+            shapeLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
             shapeLayer.path = path.cgPath
             shapeLayer.lineWidth = strokeWidth
             

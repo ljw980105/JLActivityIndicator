@@ -15,7 +15,7 @@ protocol ActivityIndicating {
     var paths: [UIBezierPath] { get set }
     var color: UIColor { get set }  
     var duration: Double { get set }
-    var size: CGFloat { get set }
+    var size: CGSize { get set }
     var strokeWidth: CGFloat { get set }
     
     func setup(on view: UIView)

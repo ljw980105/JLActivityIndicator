@@ -12,8 +12,8 @@ public class JLActivityIndicator: UIView {
     private var spinner: ActivityIndicating = PathSpinner()
     private var startedSpinning = false
     
-    /** The path the activity indicator's drawing will follow. Make sure it's containied
-        in a size x size square. Only applies to the path mode.
+    /** An array of paths the activity indicator's drawings will follow. Make sure it's containied
+        within a rectangle defined by the size property. Only applies to the path mode.
      */
     public var paths: [UIBezierPath] = [UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60))] {
         didSet { spinner.paths = paths }
@@ -33,8 +33,8 @@ public class JLActivityIndicator: UIView {
         didSet { spinner.color = color }
     }
     
-    /** The frame of the activity indicator will be a size x size rectangle. Only applies to the path mode.  */
-    public var size: CGFloat = 60 {
+    /** The frame of the activity indicator will be a rectangle defined by this property. Only applies to the path mode.  */
+    public var size: CGSize = CGSize(width: 60, height: 60) {
         didSet { spinner.size = size }
     }
     

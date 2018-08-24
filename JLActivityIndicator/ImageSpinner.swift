@@ -9,12 +9,10 @@
 import Foundation
 
 class ImageSpinner: ActivityIndicating {
-    var paths: [UIBezierPath] = [UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60))]
+    var paths: [JLBezierPath] = []
     var image: UIImageView?
     var duration: Double = 1
-    var color: UIColor = UIColor.lightGray
     var size: CGSize = CGSize.zero
-    var strokeWidth: CGFloat = 3.0
     var view: UIView?
     
     private let rotationAnimationKey = "rotationanimationkey"

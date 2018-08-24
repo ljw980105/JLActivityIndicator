@@ -58,9 +58,9 @@ DispatchQueue.global(qos: .userInitiated).async {
 Supply custom  `UIBezierPath` objects, and the code will draw one or many custom paths!  You can add more paths by filling the `paths` array.
 
 ```swift
+// The code below produces the circular animation with the red color, as shown in the beginning.
 let spinner = JLActivityIndicator(on: view, mode: .path)
-spinner.paths = [UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60))]
-spinner.color  = UIColor.red
+spinner.paths = [JLBezierPath(strokeColor: UIColor.red, strokePath: UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 100, height: 100)))],
 spinner.size = CGSize(width: 60, height: 60)
 spinner.start()
 DispatchQueue.global(qos: .userInitiated).async {
@@ -83,7 +83,7 @@ path.addLine(to: CGPoint(x: 80, y: 60))
 path.addLine(to: CGPoint(x: 100, y: 60))
 
 let spinner = JLActivityIndicator(on: view, mode: .path)
-spinner.paths = [path]
+spinner.paths = [JLBezierPath(strokeColor: UIColor.red, strokePath: path)]
 spinner.size = CGSize(width: 100, height: 100)
 spinner.start()
 ```
@@ -97,14 +97,21 @@ For the `.image` mode, you can specify the image and set the animation duration.
 spinner.image = UIImage(named: "myImage")
 spinner.duration = 1.0 // defaults to 1 second
 ```
-For the `.path` mode, there are 5 customizable options. Adding more items to the `paths` array will cause all paths contained in the array to animate at the same time. Please make sure that the any paths contained in the `paths` array are contained within a square with the width of `size`: 
+For the `.path` mode, there are more customizable options. Adding more items to the `paths` array will cause all paths contained in the array to animate at the same time. Please make sure that the any paths contained in the `paths` array are contained within a rectangle defined by the  `size` property. 
+
+In addition, the `JLBezierPath` struct is a wrapper for the `UIBezierPath` that this library requests. You can customize the color, width and the actual bezier path of `JLBezierPath`.
 
 ```swift 
-spinner.duration = 1.0 // defaults to 1 second
-spinner.color = UIColor.red // defaults to light grey
+// All properties of JLBezierPath have default values. 
+// strokeWidth defaults to 3.0, strokeColor defaults to lightGray, and the default path is a 60x60 circle.
+// To get started by using default values, you can simply call 'let bezierPath = JLBezierPath()'.
+let bezierPath = JLBezierPath(strokeWidth: 5.0, 
+                              strokeColor: UIColor.blue, 
+                              strokePath: UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 40, height: 40)))
+
 spinner.size = CGSize(width: 60, height: 60) // the spinner will be drawn in a rectangle defined by this property. Defaults to 60x60
-spinner.paths = [UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60))] // defaults to a 60 x 60 circle
-spinner.strokeWidth = 3.0 // defaults to 3.0
+spinner.duration = 1.0 // defaults to 1 second
+spinner.paths = [bezierPath] // if you don't assign the paths, the activity indicator's path will default to a 60 x 60 gray circle w/ a stroke width of 3.0 
 ```
 ## License
 This repo is licensed under the MIT license. 

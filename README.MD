@@ -22,7 +22,13 @@ pod install
 
 ### Carthage
 
-Coming soon!
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks. To integrate `JLActivityIndicator` into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```shell
+github "ljw980105/JLActivityIndicator"
+```
+
+Run `carthage bootstrap` to build the framework in your repository's Carthage directory.
 
 ## Usage
 
@@ -60,7 +66,7 @@ Supply custom  `UIBezierPath` objects, and the code will draw one or many custom
 ```swift
 // The code below produces the circular animation with the red color, as shown in the beginning.
 let spinner = JLActivityIndicator(on: view, mode: .path)
-spinner.paths = [JLBezierPath(strokeColor: UIColor.red, strokePath: UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 100, height: 100)))],
+spinner.paths = [JLBezierPath(strokeColor: UIColor.red, strokePath: UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60)))],
 spinner.size = CGSize(width: 60, height: 60)
 spinner.start()
 DispatchQueue.global(qos: .userInitiated).async {

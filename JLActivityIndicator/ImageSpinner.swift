@@ -14,6 +14,7 @@ class ImageSpinner: ActivityIndicating {
     var duration: Double = 1
     var size: CGSize = CGSize.zero
     var view: UIView?
+    var reverseDirection: Bool = false
     
     private let rotationAnimationKey = "rotationanimationkey"
     
@@ -49,7 +50,7 @@ class ImageSpinner: ActivityIndicating {
             let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
             
             rotationAnimation.fromValue = 0.0
-            rotationAnimation.toValue = Float.pi * 2.0
+            rotationAnimation.toValue = reverseDirection ? Float.pi * -2.0 : Float.pi * 2.0
             rotationAnimation.duration = duration
             rotationAnimation.repeatCount = .greatestFiniteMagnitude
             

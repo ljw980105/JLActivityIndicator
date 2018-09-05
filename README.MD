@@ -98,10 +98,11 @@ spinner.start()
 
 ### Customizable Properties
 
-For the `.image` mode, you can specify the image and set the animation duration. All other customizations will be ignored.
+For the `.image` mode, you can specify the image, the animation duration and the direction of rotation. All other customizations will be ignored.
 ```swift
 spinner.image = UIImage(named: "myImage")
 spinner.duration = 1.0 // defaults to 1 second
+spinner.reverseDirection = false // defaults to false
 ```
 For the `.path` mode, there are more customizable options. Adding more items to the `paths` array will cause all paths contained in the array to animate at the same time. Please make sure that the any paths contained in the `paths` array are contained within a rectangle defined by the  `size` property. 
 
@@ -117,6 +118,7 @@ let bezierPath = JLBezierPath(strokeWidth: 5.0,
 
 spinner.size = CGSize(width: 60, height: 60) // the spinner will be drawn in a rectangle defined by this property. Defaults to 60x60
 spinner.duration = 1.0 // defaults to 1 second
+spinner.reverseDirection = false // defaults to false
 spinner.paths = [bezierPath] // if you don't assign the paths, the activity indicator's path will default to a 60 x 60 gray circle w/ a stroke width of 3.0 
 ```
 ## License

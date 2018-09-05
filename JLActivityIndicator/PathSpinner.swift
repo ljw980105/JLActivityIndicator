@@ -15,6 +15,7 @@ class PathSpinner: ActivityIndicating {
     var duration: Double = 1
     var size: CGSize = CGSize(width: 60, height: 60)
     var view: UIView?
+    var reverseDirection: Bool = false
     
     private var animationKeys = [String]()
     
@@ -50,16 +51,20 @@ class PathSpinner: ActivityIndicating {
     
     func startAnimation() {
         var count = 0
+        
+        let fromValue = reverseDirection ? 1.0 : 0.0
+        let toValue = reverseDirection ? 0.0 : 1.0
+        
         for shapeLayer in shapeLayers {
             let startAnimation = CABasicAnimation(keyPath: "strokeEnd")
-            startAnimation.fromValue = 0.0
-            startAnimation.toValue = 1.0
+            startAnimation.fromValue = fromValue
+            startAnimation.toValue = toValue
             startAnimation.duration = duration
             startAnimation.beginTime = 0
             
             let reverseAnimation = CABasicAnimation(keyPath: "strokeStart")
-            reverseAnimation.fromValue = 0.0
-            reverseAnimation.toValue = 1.0
+            reverseAnimation.fromValue = fromValue
+            reverseAnimation.toValue = toValue
             reverseAnimation.duration = duration
             reverseAnimation.beginTime = duration
             

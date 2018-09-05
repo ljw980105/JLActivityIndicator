@@ -32,6 +32,11 @@ public class JLActivityIndicator: UIView {
         didSet { spinner.size = size }
     }
     
+    /** Determines whether or not to reverse the direction of the animation. Applicable to both modes. */
+    public var reverseDirection: Bool = false {
+        didSet { spinner.reverseDirection = reverseDirection }
+    }
+    
     /**
      *  Initializer for the activity indicator.
      * - parameter view: The view the actvity indicator will be placed on.

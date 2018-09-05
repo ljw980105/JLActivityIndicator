@@ -15,6 +15,7 @@ protocol ActivityIndicating {
     var paths: [JLBezierPath] { get set }
     var duration: Double { get set }
     var size: CGSize { get set }
+    var reverseDirection: Bool { get set }
     
     func setup(on view: UIView)
     func start()

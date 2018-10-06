@@ -36,7 +36,7 @@ Start by adding `import JLActivityIndicator` on the top of your file.
 
 ### Available Modes
 
-`JLActivityIndicator` has two modes of animation: 
+`JLActivityIndicator` has two modes of animation, as indicated with the  `JLAnimationMode` enum: 
 
 ```swift
 case path //supply custom UIBezierPath objects for the activity indicator
@@ -67,7 +67,6 @@ Supply custom  `UIBezierPath` objects, and the code will draw one or many custom
 // The code below produces the circular animation with the red color, as shown in the beginning.
 let spinner = JLActivityIndicator(on: view, mode: .path)
 spinner.paths = [JLBezierPath(strokeColor: UIColor.red, strokePath: UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60)))],
-spinner.size = CGSize(width: 60, height: 60)
 spinner.start()
 DispatchQueue.global(qos: .userInitiated).async {
     // time consuming task
@@ -90,7 +89,6 @@ path.addLine(to: CGPoint(x: 100, y: 60))
 
 let spinner = JLActivityIndicator(on: view, mode: .path)
 spinner.paths = [JLBezierPath(strokeColor: UIColor.red, strokePath: path)]
-spinner.size = CGSize(width: 100, height: 100)
 spinner.start()
 ```
 ![](https://raw.githubusercontent.com/ljw980105/JLActivityIndicator/master/Demos/Heartbeat.gif)
@@ -98,12 +96,14 @@ spinner.start()
 
 ### Customizable Properties
 
-For the `.image` mode, you can specify the image and set the animation duration. All other customizations will be ignored.
+For the `.image` mode, you can specify the image, the animation duration, whether or not to add a gray backdrop and the direction of rotation. All other customizations will be ignored.
 ```swift
 spinner.image = UIImage(named: "myImage")
 spinner.duration = 1.0 // defaults to 1 second
+spinner.reverseDirection = false // defaults to false
+spinner.enableBackdrop = false // defaults to false
 ```
-For the `.path` mode, there are more customizable options. Adding more items to the `paths` array will cause all paths contained in the array to animate at the same time. Please make sure that the any paths contained in the `paths` array are contained within a rectangle defined by the  `size` property. 
+For the `.path` mode, there are more customizable options. Adding more items to the `paths` array will cause all paths contained in the array to animate at the same time. 
 
 In addition, the `JLBezierPath` struct is a wrapper for the `UIBezierPath` that this library requests. You can customize the color, width and the actual bezier path of `JLBezierPath`.
 
@@ -115,8 +115,9 @@ let bezierPath = JLBezierPath(strokeWidth: 5.0,
                               strokeColor: UIColor.blue, 
                               strokePath: UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 40, height: 40)))
 
-spinner.size = CGSize(width: 60, height: 60) // the spinner will be drawn in a rectangle defined by this property. Defaults to 60x60
 spinner.duration = 1.0 // defaults to 1 second
+spinner.reverseDirection = false // defaults to false
+spinner.enableBackdrop = false // defaults to false
 spinner.paths = [bezierPath] // if you don't assign the paths, the activity indicator's path will default to a 60 x 60 gray circle w/ a stroke width of 3.0 
 ```
 ## License

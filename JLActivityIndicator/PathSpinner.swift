@@ -13,10 +13,25 @@ class PathSpinner: ActivityIndicating {
     var paths: [JLBezierPath] = [JLBezierPath()]
     var shapeLayers: [CAShapeLayer] = []
     var duration: Double = 1
-    var size: CGSize = CGSize(width: 60, height: 60)
     var view: UIView?
+    var reverseDirection: Bool = false
+    var animatedView: UIView?
+    var enableBackdrop: Bool = false
     
     private var animationKeys = [String]()
+    
+    private lazy var size: CGSize = {
+        var maxWidth: CGFloat = 0, maxHeight: CGFloat = 0
+        for path in paths {
+            if maxWidth < path.strokePath.bounds.width { maxWidth =  path.strokePath.bounds.width }
+            if maxHeight < path.strokePath.bounds.height { maxHeight = path.strokePath.bounds.height }
+        }
+        return CGSize(width: maxWidth, height: maxHeight)
+    }()
+    
+    private lazy var backgroundSize: CGSize = {
+        return CGSize(width: size.width * 1.4, height: size.height * 1.4)
+    }()
     
     // MARK: Protocol Stubs
     
@@ -25,6 +40,19 @@ class PathSpinner: ActivityIndicating {
     }
     
     func start() {
+        animatedView = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: backgroundSize))
+        
+        if enableBackdrop {
+            animatedView?.backgroundColor = JLConstants.backdropColor
+            animatedView?.layer.cornerRadius =
+                max(animatedView?.bounds.width ?? 0, animatedView?.bounds.height ?? 0) * 0.3
+            animatedView?.clipsToBounds = true
+            animatedView?.alpha = 0.5
+        }
+        
+        view?.addSubview(animatedView ?? UIView())
+        animatedView?.center = view?.center ?? CGPoint()
+        
         for path in paths {
             let shapeLayer = CAShapeLayer()
             shapeLayers.append(shapeLayer)
@@ -33,11 +61,19 @@ class PathSpinner: ActivityIndicating {
             shapeLayer.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
             shapeLayer.path = path.strokePath.cgPath
             shapeLayer.lineWidth = path.strokeWidth
-            
-            shapeLayer.position = view?.center ?? CGPoint()
-            shapeLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-            view?.layer.addSublayer(shapeLayer)
+            shapeLayer.position =  CGPoint(x: backgroundSize.width/2 , y: backgroundSize.height/2)
+            animatedView?.layer.addSublayer(shapeLayer)
         }
+        
+        if let animatedView = animatedView {
+            animatedView.alpha = 0
+            UIView.transition(with: animatedView,
+                              duration: JLConstants.fadeDuration,
+                              options: [.transitionCrossDissolve, .curveEaseInOut],
+                              animations: { animatedView.alpha = 1 },
+                              completion: nil)
+        }
+        
         startAnimation()
     }
     
@@ -46,20 +82,30 @@ class PathSpinner: ActivityIndicating {
         shapeLayers.forEach { $0.removeFromSuperlayer() }
         shapeLayers.removeAll()
         animationKeys.removeAll()
+        if let animatedView = animatedView {
+            UIView.transition(with: animatedView,
+                              duration: JLConstants.fadeDuration,
+                              options: .curveEaseInOut,
+                              animations: { animatedView.alpha = 0 },
+                              completion: { _ in animatedView.removeFromSuperview() } )
+        }
     }
     
     func startAnimation() {
         var count = 0
+        let fromValue = reverseDirection ? 1.0 : 0.0
+        let toValue = reverseDirection ? 0.0 : 1.0
+        
         for shapeLayer in shapeLayers {
             let startAnimation = CABasicAnimation(keyPath: "strokeEnd")
-            startAnimation.fromValue = 0.0
-            startAnimation.toValue = 1.0
+            startAnimation.fromValue = fromValue
+            startAnimation.toValue = toValue
             startAnimation.duration = duration
             startAnimation.beginTime = 0
             
             let reverseAnimation = CABasicAnimation(keyPath: "strokeStart")
-            reverseAnimation.fromValue = 0.0
-            reverseAnimation.toValue = 1.0
+            reverseAnimation.fromValue = fromValue
+            reverseAnimation.toValue = toValue
             reverseAnimation.duration = duration
             reverseAnimation.beginTime = duration
             
@@ -79,8 +125,8 @@ class PathSpinner: ActivityIndicating {
     
     func removeAnimation() {
         for animationKey in animationKeys {
-            if view?.layer.animation(forKey: animationKey) != nil {
-                view?.layer.removeAnimation(forKey: animationKey)
+            if animatedView?.layer.animation(forKey: animationKey) != nil {
+                animatedView?.layer.removeAnimation(forKey: animationKey)
             }
         }
     }

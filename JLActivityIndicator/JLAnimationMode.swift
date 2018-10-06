@@ -1,5 +1,5 @@
 //
-//  SpinnerMode.swift
+//  JLAnimationMode.swift
 //  JLActivityIndicator
 //
 //  Created by Jing Wei Li on 8/4/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum SpinnerMode {
+public enum JLAnimationMode {
     case path
     case image
 }

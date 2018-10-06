@@ -12,7 +12,7 @@ public class JLActivityIndicator: UIView {
     private var spinner: ActivityIndicating = PathSpinner()
     private var startedSpinning = false
     
-    /** An array of paths the activity indicator's drawings will follow. Make sure the encapsulated path object is containied within a rectangle defined by the size property. Only applies to the path mode.
+    /** An array of paths the activity indicator's drawings will follow. Make sure the encapsulated path objects are containied within a rectangle defined by the size property. Only applies to the path mode.
      */
     public var paths: [JLBezierPath] = [JLBezierPath()] {
         didSet { spinner.paths = paths }
@@ -27,9 +27,14 @@ public class JLActivityIndicator: UIView {
         didSet { spinner.duration = duration }
     }
     
-    /** The frame of the activity indicator will be a rectangle defined by this property. Only applies to the path mode.  */
-    public var size: CGSize = CGSize(width: 60, height: 60) {
-        didSet { spinner.size = size }
+    /** Determines whether or not to reverse the direction of the animation. Applicable to both modes. */
+    public var reverseDirection: Bool = false {
+        didSet { spinner.reverseDirection = reverseDirection }
+    }
+    
+    /** Determine whether the activity indicator should have a gray backdrop. Applicable to both modes. */
+    public var enableBackDrop: Bool = false {
+        didSet { spinner.enableBackdrop = enableBackDrop }
     }
     
     /**
@@ -38,7 +43,7 @@ public class JLActivityIndicator: UIView {
      * - parameter mode: An enum to specify the appearance / behavior of the indicator.
      * Available modes include both path and image.
      */
-    public init(on view: UIView, mode: SpinnerMode) {
+    public init(on view: UIView, mode: JLAnimationMode) {
         super.init(frame: view.frame)
         
         switch mode {

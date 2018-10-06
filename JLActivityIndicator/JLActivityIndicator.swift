@@ -27,11 +27,6 @@ public class JLActivityIndicator: UIView {
         didSet { spinner.duration = duration }
     }
     
-    /** The frame of the activity indicator will be a rectangle defined by this property. Only applies to the path mode.  */
-    public var size: CGSize = CGSize(width: 60, height: 60) {
-        didSet { spinner.size = size }
-    }
-    
     /** Determines whether or not to reverse the direction of the animation. Applicable to both modes. */
     public var reverseDirection: Bool = false {
         didSet { spinner.reverseDirection = reverseDirection }

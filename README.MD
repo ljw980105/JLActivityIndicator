@@ -67,7 +67,6 @@ Supply custom  `UIBezierPath` objects, and the code will draw one or many custom
 // The code below produces the circular animation with the red color, as shown in the beginning.
 let spinner = JLActivityIndicator(on: view, mode: .path)
 spinner.paths = [JLBezierPath(strokeColor: UIColor.red, strokePath: UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 60, height: 60)))],
-spinner.size = CGSize(width: 60, height: 60)
 spinner.start()
 DispatchQueue.global(qos: .userInitiated).async {
     // time consuming task
@@ -90,7 +89,6 @@ path.addLine(to: CGPoint(x: 100, y: 60))
 
 let spinner = JLActivityIndicator(on: view, mode: .path)
 spinner.paths = [JLBezierPath(strokeColor: UIColor.red, strokePath: path)]
-spinner.size = CGSize(width: 100, height: 100)
 spinner.start()
 ```
 ![](https://raw.githubusercontent.com/ljw980105/JLActivityIndicator/master/Demos/Heartbeat.gif)
@@ -105,7 +103,7 @@ spinner.duration = 1.0 // defaults to 1 second
 spinner.reverseDirection = false // defaults to false
 spinner.enableBackdrop = false // defaults to false
 ```
-For the `.path` mode, there are more customizable options. Adding more items to the `paths` array will cause all paths contained in the array to animate at the same time. Please make sure that the any paths contained in the `paths` array are contained within a rectangle defined by the  `size` property. 
+For the `.path` mode, there are more customizable options. Adding more items to the `paths` array will cause all paths contained in the array to animate at the same time. 
 
 In addition, the `JLBezierPath` struct is a wrapper for the `UIBezierPath` that this library requests. You can customize the color, width and the actual bezier path of `JLBezierPath`.
 
@@ -117,7 +115,6 @@ let bezierPath = JLBezierPath(strokeWidth: 5.0,
                               strokeColor: UIColor.blue, 
                               strokePath: UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 40, height: 40)))
 
-spinner.size = CGSize(width: 60, height: 60) // the spinner will be drawn in a rectangle defined by this property. Defaults to 60x60
 spinner.duration = 1.0 // defaults to 1 second
 spinner.reverseDirection = false // defaults to false
 spinner.enableBackdrop = false // defaults to false

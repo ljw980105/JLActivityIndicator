@@ -12,7 +12,6 @@ class ImageSpinner: ActivityIndicating {
     var paths: [JLBezierPath] = []
     var image: UIImageView?
     var duration: Double = 1
-    var size: CGSize = CGSize.zero
     var view: UIView?
     var reverseDirection: Bool = false
     var enableBackdrop: Bool = false

@@ -13,13 +13,21 @@ class PathSpinner: ActivityIndicating {
     var paths: [JLBezierPath] = [JLBezierPath()]
     var shapeLayers: [CAShapeLayer] = []
     var duration: Double = 1
-    var size: CGSize = CGSize(width: 60, height: 60)
     var view: UIView?
     var reverseDirection: Bool = false
     var animatedView: UIView?
     var enableBackdrop: Bool = false
     
     private var animationKeys = [String]()
+    
+    private lazy var size: CGSize = {
+        var maxWidth: CGFloat = 0, maxHeight: CGFloat = 0
+        for path in paths {
+            if maxWidth < path.strokePath.bounds.width { maxWidth =  path.strokePath.bounds.width }
+            if maxHeight < path.strokePath.bounds.height { maxHeight = path.strokePath.bounds.height }
+        }
+        return CGSize(width: maxWidth, height: maxHeight)
+    }()
     
     private lazy var backgroundSize: CGSize = {
         return CGSize(width: size.width * 1.4, height: size.height * 1.4)

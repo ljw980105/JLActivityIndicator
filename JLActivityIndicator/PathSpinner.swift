@@ -112,7 +112,7 @@ class PathSpinner: ActivityIndicating {
             let animationGroup = CAAnimationGroup()
             animationGroup.animations = [reverseAnimation, startAnimation]
             animationGroup.repeatCount = .greatestFiniteMagnitude
-            animationGroup.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            animationGroup.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
             animationGroup.autoreverses = true
             animationGroup.duration = duration * 2
             

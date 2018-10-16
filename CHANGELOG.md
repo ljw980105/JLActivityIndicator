@@ -2,6 +2,9 @@
 
 This document lists changes made to this project for each new version.
 
+## 1.2.1
+* Fixed an error that prevented the framework to build.
+
 ## 1.2
 ### Changes
 * Migrated to Swift 4.2

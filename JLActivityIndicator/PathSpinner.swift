@@ -52,6 +52,7 @@ class PathSpinner: ActivityIndicating {
         
         view?.addSubview(animatedView ?? UIView())
         animatedView?.center = view?.center ?? CGPoint()
+        JLUtilities.center(subview: animatedView, on: view)
         
         for path in paths {
             let shapeLayer = CAShapeLayer()

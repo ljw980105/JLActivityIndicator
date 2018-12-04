@@ -2,6 +2,9 @@
 
 This document lists changes made to this project for each new version.
 
+## 2.0
+* Added the feature to center the activity indicator in the superview using autolayout constraints. 
+
 ## 1.2.1
 * Fixed an error that prevented the framework to build.
 

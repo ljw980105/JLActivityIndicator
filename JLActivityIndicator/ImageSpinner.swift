@@ -25,7 +25,8 @@ class ImageSpinner: ActivityIndicating {
     
     func start() {
         DispatchQueue.main.async { [weak self] in
-            guard let strongSelf = self, let unwrappedImage = self?.image,
+            guard let strongSelf = self,
+                let unwrappedImage = self?.image,
                 let unwrappedView = self?.view else { return }
             if strongSelf.enableBackdrop {
                 let maxImageLength = max(unwrappedImage.bounds.size.width, unwrappedImage.bounds.size.height)
@@ -40,9 +41,13 @@ class ImageSpinner: ActivityIndicating {
                                                 y: (strongSelf.backdropView?.bounds.height ?? 60)/2)
                 strongSelf.backdropView?.addSubview(unwrappedImage)
                 unwrappedView.addSubview(strongSelf.backdropView!)
+                // center image inside backdrop, then center backdrop inside the parent view
+                JLUtilities.center(subview: unwrappedImage, on: strongSelf.backdropView)
+                JLUtilities.center(subview: strongSelf.backdropView, on: unwrappedView)
             } else {
                 unwrappedImage.center = CGPoint(x: unwrappedView.bounds.width/2, y: unwrappedView.bounds.height/2)
                 unwrappedView.addSubview(unwrappedImage)
+                JLUtilities.center(subview: unwrappedImage, on: unwrappedView)
             }
             
             if let animatedView = strongSelf.view?.subviews.last {

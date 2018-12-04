@@ -11,7 +11,8 @@ import Foundation
 class JLUtilities {
     
     /**
-     * Helper method to center a subview inside a superview.
+     * Helper method to center a subview inside a superview through the use of
+     * Autolayout constraints.
      * - parameter parentview: The parent view to center the `subivew` inside.
      * - parameter subview: The subvicew to be centered inside the `parentview`.
      */

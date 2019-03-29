@@ -2,6 +2,9 @@
 
 This document lists changes made to this project for each new version.
 
+## 2.1
+* Added support for Swift 5.
+
 ## 2.0
 * Added the feature to center the activity indicator in the superview using autolayout constraints. 
 

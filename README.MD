@@ -1,3 +1,5 @@
+![](https://travis-ci.org/ljw980105/JLActivityIndicator.svg?branch=master)
+
 # JLActivityIndicator
 
 A replacement for the build-in `UIActivityIndicator` on iOS. Supply a custom image for your spinner or supply any `UIBezierPath`! Written with the Core Animation Framework in Swift.

@@ -14,9 +14,21 @@
 		044327F9211664A300C70D0F /* ImageSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044327F8211664A300C70D0F /* ImageSpinner.swift */; };
 		045520C921B630D800760B61 /* JLUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045520C821B630D700760B61 /* JLUtilities.swift */; };
 		048CD2B521462B2500B68CCD /* JLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048CD2B421462B2500B68CCD /* JLConstants.swift */; };
+		04A1CE5F224ED99500EB5DFB /* JLActivityIndicatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A1CE5E224ED99500EB5DFB /* JLActivityIndicatorTests.swift */; };
+		04A1CE61224ED99500EB5DFB /* JLActivityIndicator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D038E72116334C0052CF9A /* JLActivityIndicator.framework */; };
 		04B3EE9F212F9E8C006B1A0A /* JLBezierPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B3EE9E212F9E8C006B1A0A /* JLBezierPath.swift */; };
 		04D038EC2116334C0052CF9A /* JLActivityIndicator.h in Headers */ = {isa = PBXBuildFile; fileRef = 04D038EA2116334C0052CF9A /* JLActivityIndicator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04A1CE62224ED99500EB5DFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04D038DE2116334C0052CF9A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04D038E62116334C0052CF9A;
+			remoteInfo = JLActivityIndicator;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		044327F0211636FE00C70D0F /* ActivityIndicating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicating.swift; sourceTree = "<group>"; };
@@ -26,6 +38,9 @@
 		044327F8211664A300C70D0F /* ImageSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSpinner.swift; sourceTree = "<group>"; };
 		045520C821B630D700760B61 /* JLUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLUtilities.swift; sourceTree = "<group>"; };
 		048CD2B421462B2500B68CCD /* JLConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLConstants.swift; sourceTree = "<group>"; };
+		04A1CE5C224ED99500EB5DFB /* JLActivityIndicatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLActivityIndicatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04A1CE5E224ED99500EB5DFB /* JLActivityIndicatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLActivityIndicatorTests.swift; sourceTree = "<group>"; };
+		04A1CE60224ED99500EB5DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04B3EE9E212F9E8C006B1A0A /* JLBezierPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JLBezierPath.swift; sourceTree = "<group>"; };
 		04D038E72116334C0052CF9A /* JLActivityIndicator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JLActivityIndicator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		04D038EA2116334C0052CF9A /* JLActivityIndicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JLActivityIndicator.h; sourceTree = "<group>"; };
@@ -33,6 +48,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		04A1CE59224ED99500EB5DFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04A1CE61224ED99500EB5DFB /* JLActivityIndicator.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		04D038E42116334C0052CF9A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -43,10 +66,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04A1CE5D224ED99500EB5DFB /* JLActivityIndicatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				04A1CE5E224ED99500EB5DFB /* JLActivityIndicatorTests.swift */,
+				04A1CE60224ED99500EB5DFB /* Info.plist */,
+			);
+			path = JLActivityIndicatorTests;
+			sourceTree = "<group>";
+		};
 		04D038DD2116334C0052CF9A = {
 			isa = PBXGroup;
 			children = (
 				04D038E92116334C0052CF9A /* JLActivityIndicator */,
+				04A1CE5D224ED99500EB5DFB /* JLActivityIndicatorTests */,
 				04D038E82116334C0052CF9A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				04D038E72116334C0052CF9A /* JLActivityIndicator.framework */,
+				04A1CE5C224ED99500EB5DFB /* JLActivityIndicatorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,6 +124,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		04A1CE5B224ED99500EB5DFB /* JLActivityIndicatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04A1CE64224ED99500EB5DFB /* Build configuration list for PBXNativeTarget "JLActivityIndicatorTests" */;
+			buildPhases = (
+				04A1CE58224ED99500EB5DFB /* Sources */,
+				04A1CE59224ED99500EB5DFB /* Frameworks */,
+				04A1CE5A224ED99500EB5DFB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04A1CE63224ED99500EB5DFB /* PBXTargetDependency */,
+			);
+			name = JLActivityIndicatorTests;
+			productName = JLActivityIndicatorTests;
+			productReference = 04A1CE5C224ED99500EB5DFB /* JLActivityIndicatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		04D038E62116334C0052CF9A /* JLActivityIndicator */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04D038EF2116334C0052CF9A /* Build configuration list for PBXNativeTarget "JLActivityIndicator" */;
@@ -114,9 +166,13 @@
 		04D038DE2116334C0052CF9A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Jing Wei Li";
 				TargetAttributes = {
+					04A1CE5B224ED99500EB5DFB = {
+						CreatedOnToolsVersion = 10.2;
+					};
 					04D038E62116334C0052CF9A = {
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1020;
@@ -136,11 +192,19 @@
 			projectRoot = "";
 			targets = (
 				04D038E62116334C0052CF9A /* JLActivityIndicator */,
+				04A1CE5B224ED99500EB5DFB /* JLActivityIndicatorTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		04A1CE5A224ED99500EB5DFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		04D038E52116334C0052CF9A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -151,6 +215,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		04A1CE58224ED99500EB5DFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04A1CE5F224ED99500EB5DFB /* JLActivityIndicatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		04D038E32116334C0052CF9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -168,7 +240,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		04A1CE63224ED99500EB5DFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04D038E62116334C0052CF9A /* JLActivityIndicator */;
+			targetProxy = 04A1CE62224ED99500EB5DFB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		04A1CE65224ED99500EB5DFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NDBTK98VL3;
+				INFOPLIST_FILE = JLActivityIndicatorTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jingweili.JLActivityIndicatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04A1CE66224ED99500EB5DFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NDBTK98VL3;
+				INFOPLIST_FILE = JLActivityIndicatorTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jingweili.JLActivityIndicatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		04D038ED2116334C0052CF9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -349,6 +467,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		04A1CE64224ED99500EB5DFB /* Build configuration list for PBXNativeTarget "JLActivityIndicatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04A1CE65224ED99500EB5DFB /* Debug */,
+				04A1CE66224ED99500EB5DFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		04D038E12116334C0052CF9A /* Build configuration list for PBXProject "JLActivityIndicator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

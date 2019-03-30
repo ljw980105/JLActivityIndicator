@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "04A1CE5B224ED99500EB5DFB"
+               BuildableName = "JLActivityIndicatorTests.xctest"
+               BlueprintName = "JLActivityIndicatorTests"
+               ReferencedContainer = "container:JLActivityIndicator.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "04D038E62116334C0052CF9A"
+            BuildableName = "JLActivityIndicator.framework"
+            BlueprintName = "JLActivityIndicator"
+            ReferencedContainer = "container:JLActivityIndicator.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

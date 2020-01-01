@@ -6,7 +6,7 @@
 //  Copyright © 2018 Jing Wei Li. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 /**
  * A wrapper for the bezier path JLActivityIndicator uses. Customizable options include stroke width,

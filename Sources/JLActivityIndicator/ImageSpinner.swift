@@ -6,7 +6,7 @@
 //  Copyright © 2018 Jing Wei Li. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ImageSpinner: ActivityIndicating {
     var paths: [JLBezierPath] = []
@@ -16,6 +16,7 @@ class ImageSpinner: ActivityIndicating {
     var reverseDirection: Bool = false
     var enableBackdrop: Bool = false
     var backdropView: UIView?
+    var backdropColor: UIColor? = JLConstants.backdropColor
     
     private let rotationAnimationKey = "rotationanimationkey"
     
@@ -32,7 +33,7 @@ class ImageSpinner: ActivityIndicating {
                 let maxImageLength = max(unwrappedImage.bounds.size.width, unwrappedImage.bounds.size.height)
                 let backdropSize = maxImageLength + maxImageLength * 0.4
                 strongSelf.backdropView = UIView(frame: CGRect(x: 0, y: 0, width: backdropSize, height: backdropSize))
-                strongSelf.backdropView?.backgroundColor = JLConstants.backdropColor
+                strongSelf.backdropView?.backgroundColor = backdropColor
                 strongSelf.backdropView?.center =
                     CGPoint(x: unwrappedView.bounds.width/2, y: unwrappedView.bounds.height/2)
                 strongSelf.backdropView?.layer.cornerRadius = backdropSize * 0.3

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'JLActivityIndicator'
-  s.version          = '2.1'
+  s.version          = '2.2.1'
   s.summary          = 'An iOS Activity Indicator Capable of Drawing Custom Paths!'
   s.description      = 'This activity indicator allows you to supply any image or UIBezierPath to the indicator, creating amazing loading effects!'
  
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/ljw980105/JLActivityIndicator.git', :tag => s.version.to_s }
  
   s.ios.deployment_target = '9.0'
-  s.source_files = 'JLActivityIndicator/*.{h,swift}'
+  s.source_files = 'Sources/JLActivityIndicator/*.{h,swift}'
   s.framework    = 'UIKit'
  
 end

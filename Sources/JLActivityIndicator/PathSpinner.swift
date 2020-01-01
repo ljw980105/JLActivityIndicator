@@ -6,7 +6,7 @@
 //  Copyright © 2018 Jing Wei Li. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class PathSpinner: ActivityIndicating {
     var image: UIImageView?
@@ -17,6 +17,7 @@ class PathSpinner: ActivityIndicating {
     var reverseDirection: Bool = false
     var animatedView: UIView?
     var enableBackdrop: Bool = false
+    var backdropColor: UIColor? = JLConstants.backdropColor
     
     private var animationKeys = [String]()
     
@@ -43,7 +44,7 @@ class PathSpinner: ActivityIndicating {
         animatedView = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: backgroundSize))
         
         if enableBackdrop {
-            animatedView?.backgroundColor = JLConstants.backdropColor
+            animatedView?.backgroundColor = backdropColor
             animatedView?.layer.cornerRadius =
                 max(animatedView?.bounds.width ?? 0, animatedView?.bounds.height ?? 0) * 0.3
             animatedView?.clipsToBounds = true

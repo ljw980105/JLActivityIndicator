@@ -2,6 +2,9 @@
 
 This document lists changes made to this project for each new version.
 
+## 2.2.1
+* Added Support for Swift Package Manager and ability to change backdrop color.
+
 ## 2.1
 * Added support for Swift 5.
 

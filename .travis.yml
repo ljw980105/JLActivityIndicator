@@ -1,5 +1,5 @@
-osx_image: xcode10.2
+osx_image: xcode11
 language: objective-c
 xcode_project: JLActivityIndicator.xcodeproj
 xcode_scheme: JLActivityIndicator
-xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone X
+xcode_destination: platform=iOS Simulator,OS=13.0,name=iPhone 11 Pro

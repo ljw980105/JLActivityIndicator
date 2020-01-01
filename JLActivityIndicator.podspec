@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/ljw980105/JLActivityIndicator.git', :tag => s.version.to_s }
  
   s.ios.deployment_target = '9.0'
-  s.source_files = 'JLActivityIndicator/*.{h,swift}'
+  s.source_files = 'Sources/JLActivityIndicator/*.{h,swift}'
   s.framework    = 'UIKit'
  
 end

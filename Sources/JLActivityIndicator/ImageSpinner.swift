@@ -6,7 +6,7 @@
 //  Copyright © 2018 Jing Wei Li. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ImageSpinner: ActivityIndicating {
     var paths: [JLBezierPath] = []

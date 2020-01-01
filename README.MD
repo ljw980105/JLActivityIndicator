@@ -30,6 +30,13 @@ pod install
 github "ljw980105/JLActivityIndicator"
 ```
 
+### Swift Package Manager
+Add this package to the dependencies within your application’s Package.swift file. Substitute "x.x.x" with the latest version of this project.
+
+```
+.package(url: "https://github.com/ljw980105/JLActivityIndicator.git", from: "x.x.x")
+```
+
 Run `carthage bootstrap` to build the framework in your repository's Carthage directory.
 
 ## Usage

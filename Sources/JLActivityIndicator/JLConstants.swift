@@ -6,7 +6,7 @@
 //  Copyright © 2018 Jing Wei Li. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum JLConstants {
     static let backdropColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)

@@ -17,7 +17,7 @@ class PathSpinner: ActivityIndicating {
     var reverseDirection: Bool = false
     var animatedView: UIView?
     var enableBackdrop: Bool = false
-    var backdropColor: UIColor? = JLConstants.backdropColor
+    var backdropColor: UIColor = JLConstants.backdropColor
     
     private var animationKeys = [String]()
     
